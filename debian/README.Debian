@@ -1,0 +1,11 @@
+txt2man for Debian
+------------------
+
+The manpage of txt2man is very useful to learn how to use the program.
+In addition, you can see some examples in /usr/share/doc/txt2man/examples/
+directory.
+
+To use bookman program, provided by txt2man package, you need install
+ghostscript and groff.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sat, 27 Jun 2020 23:31:43 -0300

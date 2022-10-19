@@ -1,0 +1,26 @@
+txt2man
+-------
+
+EXAMPLE OF USAGE
+
+The following command will generate a manpage from txt2man.txt file, used
+as source code:
+
+    $ txt2man -d "15 May 2016" -t txt2man -r txt2man-1.5.6 -s 1 -v "converts text to man page" txt2man.txt > txt2man.1
+
+Alternatively, you can use the create-man.sh script, available in the same
+directory of this README file. All you need is change the variables value
+and run the script. You can run the current configured script to see an
+example over START-HERE.TXT text.
+
+Note that a manpage name must be written in lower case. START-HERE.TXT and
+START-HERE-2.TXT are in upper case to draw attention of users.
+
+To see a manpage locally, you can use 'man -l' command or './' in manpage
+name. You also can use the full path of manpage. See some examples below:
+
+    $ man -l start-here.1
+    $ man ./start-here.1
+    $ man /usr/share/doc/txt2man/examples/start-here.1
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Tue, 06 Nov 2018 18:15:39 -0200

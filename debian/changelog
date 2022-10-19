@@ -1,0 +1,362 @@
+txt2man (1.7.1-2) unstable; urgency=medium
+
+  * debian/control: bumped Standards-Version to 4.5.1.
+  * debian/copyright: updated packaging copyright years.
+  * debian/patches/020_fix-display-blocks.patch: created to fix regression in
+    handling display blocks. (Closes: #992283)
+  * debian/tests/:
+      - Added a new test to verify #992283.
+      - Improved a test.
+  * debian/watch: updated the search rule to make it compliant with new
+    standards of the GitHub.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Mon, 16 Aug 2021 14:41:36 -0300
+
+txt2man (1.7.1-1) unstable; urgency=medium
+
+  * New upstream version 1.7.1.
+  * debian/examples.d/:
+      - Added two new examples: iwatch.txt and vokoscreenNG.txt.
+      - cbm.txt: removed.
+      - chaosreader.txt: fixed a command in EXAMPLES section.
+  * debian/patches/: the upstream fixed several things in source code (thanks
+    Marc!). Consequently:
+      - Removed the following patches:
+          ~ 10_make-build-reproducible.patch
+          ~ 20_drop-ksh-check.patch
+          ~ 40_fix-gawk-warning.patch
+      - 30_fix-pager-option.patch:
+          ~ Renamed to 010_fix-pager-option.patch.
+          ~ Updated to make it compliant with new upstream version.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sun, 28 Jun 2020 23:09:08 -0300
+
+txt2man (1.7.0-2) unstable; urgency=medium
+
+  * debian/control: added ghostscript to Suggests field, needed for bookman.
+  * debian/copyright: added licensing for debian/examples.d/create-man.sh.
+  * debian/examples.d/:
+      - Added a new example: packetsender.txt.
+      - create-man.sh:
+         ~ New version 2.0.
+         ~ Using a function to support multiple manpages creation.
+      - Updated some examples: START-HERE.TXT, START-HERE-2.TXT,
+        chaosreader.txt, mac-robber.txt and vinetto.txt.
+  * debian/patches/:
+      - 10_fix-makefile.patch: renamed to 10_make-build-reproducible.patch.
+      - 20_drop-ksh-check.patch: added Forwarded field.
+      - 40_fix-gawk-warning.patch: created to fix warnings from gawk >= 5.0.1.
+      - Using Bug-Debian field correctly in all patches.
+  * debian/README.Debian: added information about bookman.
+  * debian/tests/control:
+      - Created two new tests, for bookman and src2man commands.
+      - Improved all previous tests.
+      - Using start-here.txt from debian/examples.d/ instead of from
+        debian/tests/.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sat, 27 Jun 2020 23:31:43 -0300
+
+txt2man (1.7.0-1) unstable; urgency=medium
+
+  * New upstream version 1.7.0.
+  * debian/control:
+      - Bumped Standards-Version to 4.5.0.
+      - Migrated DH level to 13.
+  * debian/copyright: updated upstream and packaging copyright years.
+  * debian/patches/:
+      - Little updates to make the following patches compliant with the new
+        upstream version:
+          ~ 10_fix-makefile.patch
+          ~ 30_fix-pager-option.patch
+      - The upstream fixed the source code. Consequently, removed the
+        following patches:
+          ~ 40_add-missing-space.patch
+          ~ 50_fix-gawk-warnings.patch
+  * debian/upstream/metadata: created.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sun, 07 Jun 2020 17:50:22 -0300
+
+txt2man (1.6.0-6) unstable; urgency=medium
+
+  * debian/control:
+      - Added groff to Suggests field because groff installs lots of packages.
+        (Closes: #945045)
+      - Added 'Rules-Requires-Root: no' to source stanza.
+      - Bumped Standards-Version to 4.4.1.
+  * debian/patches/50_fix-gawk-warnings.patch: created to remove redundant
+    escapes causing warnings in gawk >= 5.0.1. (Closes: #945048)
+  * debian/salsa-ci.yml: added to provide CI tests for Salsa.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Wed, 20 Nov 2019 23:19:28 -0300
+
+txt2man (1.6.0-5) unstable; urgency=medium
+
+  * Using new DH level format. Consequently:
+      - debian/compat: removed.
+      - debian/control: changed from 'debhelper' to 'debhelper-compat' in
+        Build-Depends field and bumped level to 12.
+  * debian/control: bumped Standards-Version to 4.3.0.
+  * debian/copyright: updated packaging copyright years.
+  * debian/examples.d/:
+      - Added a new example (cbm.txt).
+      - create-man.sh: added a check about txt2man presence.
+  * debian/patches/40_add-missing-space.patch: patch from upstream to fix a
+    missing space in bookman command.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Fri, 22 Feb 2019 22:47:01 -0300
+
+txt2man (1.6.0-4) unstable; urgency=medium
+
+  * debian/examples.d/:
+      - Added a warning inside txt2man.txt, to alert about the original manpage.
+      - Added create-man.sh, a script to make the life easier.
+      - Added new examples: start-here.txt and start-here-2.txt.
+      - Improved the README file.
+  * debian/test/:
+      - Added a new test.
+      - Using start-here.txt instead of test.txt.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Tue, 06 Nov 2018 18:15:39 -0200
+
+txt2man (1.6.0-3) unstable; urgency=medium
+
+  * Migrated DH level to 11.
+  * debian/control:
+      - Bumped Standards-Version to 4.2.1.
+      - Changed Vcs-* URLs to salsa.debian.org.
+  * debian/copyright:
+      - Updated packaging copyright years.
+      - Using a secure copyright format in URI.
+  * debian/tests/*: added to perform a trivial test.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Fri, 21 Sep 2018 23:45:16 -0300
+
+txt2man (1.6.0-2) unstable; urgency=medium
+
+  * Migrated DH level to 10.
+  * debian/control:
+      - Bumped Standards-Version to 4.0.0.
+      - Marked txt2man Multi-Arch: foreign. Thanks to Helmut
+        Grohne <helmut@subdivi.de>. (Closes: #853960)
+  * debian/copyright: updated packaging copyright years.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Tue, 19 Sep 2017 12:26:52 -0300
+
+txt2man (1.6.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/copyright: updated the upstream copyright years.
+  * debian/patches/:
+      - 10_fix-makefile.patch: little update to be compliant with new upstream
+        source code.
+      - 50_fix-pager-option.patch: renamed to 30_fix-pager-option.patch.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Mon, 15 Aug 2016 12:52:31 -0300
+
+txt2man (1.5.6+git20160619.1d3c3c3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Upload to unstable.
+  * debian/watch: added a dversionmangle to override the git statement.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sun, 07 Aug 2016 13:40:46 -0300
+
+txt2man (1.5.6+git20160519.dc56074-1) experimental; urgency=medium
+
+  * New upstream release.
+  * debian/patches/:
+      - Removed because the upstream fixed the source code (thanks!):
+          ~ 30_fix-path.patch
+          ~ 40_fix-bashisms.patch
+          ~ 60_fix-spelling.patch
+          ~ 70_reproducible-date.patch
+          ~ 80_improve-txt2man-manpage.patch
+      - Updated because the upstream fixed some points in source code (thanks!):
+          ~ 10_fix-makefile.patch
+  * debian/README.Debian: little adjustments.
+  * debian/rules: added the target override_dh_auto_install to pass the 'prefix'
+      variable to upstream Makefile.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Fri, 20 May 2016 18:21:05 -0300
+
+txt2man (1.5.6-5) unstable; urgency=medium
+
+  * debian/examples.d/:
+      - README: fixed the -r option.
+      - txt2man: fixed the -r option in EXAMPLES section.
+  * debian/patches/80_improve-txt2man-manpage.patch: updated to fix the txt2man
+      which must have two blank spaces on some points to generate the manpage
+      correctly.
+  * debian/README.Debian: little adjustments.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Tue, 17 May 2016 17:00:32 -0300
+
+txt2man (1.5.6-4) unstable; urgency=medium
+
+  * debian/control:
+      - Bumped Standards-Version to 3.9.8.
+      - Changed from cgit to git in Vcs-Browser field.
+      - Updated the Vcs-* fields to use https instead of http and git.
+  * debian/copyright: updated the packaging copyright years.
+  * debian/examples.d/:
+      - Added a new example: txt2man.txt.
+      - Reviewed all manpages.
+  * debian/patches/:
+      - Added 70_reproducible-date.patch that honour SOURCE_DATE_EPOCH if
+        available. Thanks to Reiner Herrmann <reiner@reiner-h.de>.
+        (Closes: #790801)
+      - Added 80_improve-txt2man-manpage.patch to fix some issues and
+        explain better some points.
+      - fix-makefile: renamed to 10_fix-makefile.patch.
+      - drop-ksh-check: renamed to 20_drop-ksh-check.patch.
+      - fix-path-hyphen: renamed to 30_fix-path.patch. Removed a no longer
+        needed fix for hyphen.
+      - fix-bashisms: renamed to 40_fix-bashisms.patch.
+      - fix-pager-option: renamed to 50_fix-pager-option.patch.
+      - fix-spelling-hyphen: renamed to 60_fix-spelling.patch. Updated to
+        fix a new spelling error and removed a no longer needed and
+        erroneous fix for hyphen used as minus sign.
+  * debian/watch: bumped to version 4.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sat, 14 May 2016 23:55:31 -0300
+
+txt2man (1.5.6-3) unstable; urgency=medium
+
+  * Upload to unstable. Welcome Jessie Stable!
+  * debian/control: little adjustment in long description.
+  * debian/copyright: dropping dot-zero from GPL license short name.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sun, 26 Apr 2015 13:29:11 -0300
+
+txt2man (1.5.6-2) experimental; urgency=medium
+
+  * Updated the patch fix-makefile to use the date of the latest entry in
+    debian/changelog for the date headers in man pages to make that builds
+    are reproducible. Thanks a lot to Jonathan Wiltshire, Jérémy Bobbio and
+    Reiner Herrmann. (Closes: #782462)
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sun, 12 Apr 2015 18:26:50 -0300
+
+txt2man (1.5.6-1) experimental; urgency=medium
+
+  * New maintainer. Thanks a lot to Fredrik Steen and Robin Cornelius for
+      your nice work over this package.
+  * New upstream release. (Closes: #656029)
+  * Acknowledge NMU. Thanks to Jonathan Wiltshire. (Closes: #724614)
+  * Migrations:
+      - DH level to 9.
+      - Standards-Version to 3.9.6.
+      - debian/copyright to 1.0 format.
+      - debian/rules to new (reduced) format.
+  * debian/control:
+      - Improved the long description.
+      - Updated the Homepage field. The upstream is using GitHub now.
+      - Updated the Vcs-* fields.
+  * debian/copyright: updated the upstream and packagers names and years.
+  * debian/dirs: removed. The fix-makefile patch fixed the upstream Makefile
+      and it will create the need directories.
+  * debian/docs: removed (useless to final user).
+  * debian/examples: created to install some examples.
+  * debian/examples.d: create to be a stuff of examples.
+  * debian/patches/:
+      - remove-ksh-check.patch:
+          . Added a header.
+          . Renamed to drop-ksh-check.
+      - debian-changes-1.5.5-2.1:
+          . Reviewed and split to fix-bashisms and fix-pager-option.
+      - fix-makefile: added to fix the upstream Makefile.
+      - fix-path-hyphen: fix a path pointing manpages level 2 and a hyphen
+        used as a minus sign in bookman file.
+      - fix-spelling-hyphen: fix a spelling error and a hyphen used as a
+        minus sign in txt2man file.
+  * debian/README.Debian: added to point to some examples.
+  * debian/watch: updated (using GitHub now).
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sat, 31 Jan 2015 13:07:36 -0200
+
+txt2man (1.5.5-4.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix CVE-2013-1444: insecure use of temporary files
+    by removing apparent debug output from
+    patches/debian-changes-1.5.5-2.1 (Closes: #724614)
+    Thanks: Patrick Cherry of Bytemark Hosting
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Wed, 25 Sep 2013 21:29:29 +0100
+
+txt2man (1.5.5-4) unstable; urgency=low
+
+  * Updated Standards version
+  * Remove broken check for ksh (Closes:#620562)
+    (in 1.5.5-3 upload)
+
+ -- Fredrik Steen <stone@debian.org>  Mon, 11 Apr 2011 11:33:43 +0200
+
+txt2man (1.5.5-3) unstable; urgency=medium
+
+  * Switch to dpkg-source 3.0
+
+ -- Fredrik Steen <stone@debian.org>  Thu, 07 Apr 2011 15:08:28 +0200
+
+txt2man (1.5.5-2) unstable; urgency=low
+
+  * Use "pager" when using option -T (Closes:#530342)
+
+ -- Fredrik Steen <stone@debian.org>  Sun, 29 Nov 2009 23:25:01 +0100
+
+txt2man (1.5.5-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix bashisms in 'bookman' script (Closes: #473696)
+
+ -- Chris Lamb <chris@chris-lamb.co.uk>  Sat, 12 Apr 2008 03:26:26 +0100
+
+txt2man (1.5.5-1) unstable; urgency=low
+
+  * New upstream release. (Closes:#415390)
+  * Incorrect generation of nroff for command line arguments
+    (Closes: #416391, #440214)
+  * Use gsub instead of sub to correctly parse file. (Closes: #221268)
+  * Fix lintian warnings due to incorrectly generated nroff comments
+
+ -- Robin Cornelius <robin.cornelius@gmail.com>  Tue, 25 Mar 2008 11:56:20 +0000
+
+txt2man (1.5.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Fredrik Steen <stone@debian.org>  Fri, 27 Oct 2006 08:57:02 +0200
+
+txt2man (1.5-2) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Fredrik <stone@dexter.lnx.nu>  Mon, 23 Oct 2006 12:36:34 +0200
+
+txt2man (1.5-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Fredrik Steen <stone@debian.org>  Mon, 23 Oct 2006 11:27:11 +0200
+
+txt2man (1.4.8-2) unstable; urgency=low
+
+  * Fixed watch file. (Closes:#300154)
+  * Fixed escaping of hyphens (Closes:#300152) - patch from
+    Wesley J. Landaker. Thank you.
+
+ -- Fredrik Steen <stone@debian.org>  Fri, 18 Mar 2005 08:50:28 +0100
+
+txt2man (1.4.8-1) unstable; urgency=low
+
+  * New upstream release
+  * This version fixes a bug in tag list parsing (Closes:#198187)
+
+ -- Fredrik Steen <stone@debian.org>  Sun, 13 Jul 2003 00:35:30 +0200
+
+txt2man (1.4.7-1) unstable; urgency=low
+
+  * Initial Release.
+  * Upload (Closes:#178953)
+
+ -- Fredrik Steen <stone@debian.org>  Wed, 29 Jan 2003 16:03:19 +0100

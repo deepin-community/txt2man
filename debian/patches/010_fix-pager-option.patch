@@ -1,0 +1,18 @@
+Description: set "pager" when using option -T.
+Author: Fredrik Steen <stone@debian.org>
+Bug-Debian: https://bugs.debian.org/530342
+Reviewed-by: Joao Eriberto Mota Filho <eriberto@debian.org>
+Last-Update: 2020-06-28
+Index: txt2man/txt2man
+===================================================================
+--- txt2man.orig/txt2man
++++ txt2man/txt2man
+@@ -152,7 +152,7 @@ do
+ 	(p) doprobe=1;;
+ 	(I) itxt="$OPTARG§$itxt";;
+ 	(B) btxt="$OPTARG§$btxt";;
+-	(T) post="groff -mandoc -Tlatin1 | ${PAGER:-more}";;
++	(T) post="groff -mandoc -Tlatin1 | ${PAGER:-pager}";;
+ 	(X) post="groff -mandoc -X -P-resolution -P100";;
+ 	(*) usage; exit;;
+ 	esac

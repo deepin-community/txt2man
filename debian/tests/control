@@ -1,0 +1,26 @@
+Test-Command: txt2man debian/examples.d/start-here.txt | egrep "TH untitled"
+
+Test-Command: txt2man -d "06 Nov 2018" -t start-here -r start-here-1.53 -s 1 -v
+              "very simple example for txt2man" debian/examples.d/start-here.txt
+              | egrep "TH start-here" -C 60 | egrep '\.SH NAME' -C 60
+              | egrep '\.SH DESCRIPTION' -C 60 | egrep '\.SH SEE ALSO' -C 60
+              | egrep '\.SH AUTHOR' -C 60 | egrep 'John Jr <jjr@example.com>' -C 60
+              | egrep '\\fBstart-here\\fP is used to demonstrate' -C 60
+              | egrep '\.PP' -C 60 | egrep '^\.TP$' -C 60 | egrep '^\.B$' -C 60
+
+Test-Command: bookman -p -t 'Unix Reference Manual' /usr/share/man/man1/* >
+              $AUTOPKGTEST_TMP/book.pdf 2> /dev/null; ls -lh $AUTOPKGTEST_TMP;
+              [ -s $AUTOPKGTEST_TMP/book.pdf ] || exit 1
+Depends: @, ghostscript, groff
+Restrictions: allow-stderr
+
+Test-Command: cp debian/tests/test.c $AUTOPKGTEST_TMP; cd $AUTOPKGTEST_TMP;
+              src2man test.c | grep foo; cat foobar.3 | egrep -C 50 "TH foobar"
+
+# A test for #992283
+Test-Command: cp debian/tests/block.txt $AUTOPKGTEST_TMP; cd $AUTOPKGTEST_TMP;
+              txt2man block.txt > block.1; man ./block.1 > text; cat text;
+              echo -e "\n\nSearching for '.fam C', '.fam T' and a title in a block:\n";
+              egrep '^\.fam C$' block.1; egrep '^\.fam T$' block.1;
+              egrep '^\ \ \ \ ORD\ \ DAY\ \ WHAT$' block.1
+Depends: @, man-db

@@ -1,0 +1,23 @@
+NAME
+ start-here-2 - another very simple example for txt2man
+SYNOPSIS
+ start-here-2 [-hnv] [-f configfile] file
+DESCRIPTION
+ start-here-2 is used to demonstrate another very
+ simple example of a manpage to be created by txt2man program.
+
+ The main intent is use a syntax different from start-here to
+ produce the same result as manpage. Please, compare both txt
+ files (start-here.txt and start-here-2.txt).
+OPTIONS
+ -h  Show help message and exit.
+ -n  Do anything.
+ -v  Verbose mode.
+ -f configfile  Use an alternative config file.
+SEE ALSO
+ start-here(1)
+AUTHOR
+ start-here was written by John Jr <jjr@example.com>.
+
+ This manual page was written by Joao Eriberto Mota Filho <eriberto@debian.org>
+ for the Debian project (but may be used by others).

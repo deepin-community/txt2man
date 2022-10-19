@@ -1,0 +1,30 @@
+Description: fix regression in handling display blocks
+             Literal blocks are started by a 'tab' per line.
+Author: Marc Vertes <mvertes@free.fr>
+Origin: https://github.com/mvertes/txt2man/commit/be89fb412fd443813db6b4d2fcd4223546138757
+Bug-Debian: https://bugs.debian.org/992283
+Forwarded: not-needed
+Reviewed-By: Joao Eriberto Mota Filho <eriberto@debian.org>
+Last-Update: 2021-08-16
+Index: txt2man/txt2man
+===================================================================
+--- txt2man.orig/txt2man
++++ txt2man/txt2man
+@@ -153,7 +153,7 @@ do
+ 	(I) itxt="$OPTARG§$itxt";;
+ 	(B) btxt="$OPTARG§$btxt";;
+ 	(T) post="groff -mandoc -Tlatin1 | ${PAGER:-pager}";;
+-	(X) post="groff -mandoc -X -P-resolution -P100";;
++	(X) post="groff -mandoc -TX100-12 -rS12";;
+ 	(*) usage; exit;;
+ 	esac
+ done
+@@ -214,7 +214,7 @@ BEGIN {
+ 	# remove spaces in empty lines
+ 	sub(/^ +$/,"")
+ }
+-/^[[:upper:][:space:][:digit:][:punct:]]+$/ {
++/^[:space:]*[[:upper:][:digit:]]+[[:upper:][:space:][:digit:][:punct:]]+$/ {
+ 	# Section header
+ 	if ((in_bd + 0) == 1) {
+ 		in_bd = 0
